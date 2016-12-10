@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="css/content.css" />
+		
+	</head>
+
+	<body>
+		<img id="imgage" src="img/slide_1.jpg"  onclick="change()"/>
+		<div class=" content">
+			<button class="button" onclick="btn_chose_1()"> 进程创建 </button>
+			<button class="button" onclick="btn_chose_2()"> 结果预览</button>
+			<div class="content_1">
+				<div class="ct">
+
+					<div class="ct_1">
+						<form class="from" onsubmit="return false;">
+							<fieldset>
+								<legend>初始设置</legend>
+
+								<span style="padding-left: 10%;">内存&nbsp;&nbsp;</span>
+								<input class="input_text" type="text" size="5rem" title="100" value="100" />MB
+
+								<span style="padding-left: 10%;">打印机&nbsp;&nbsp;</span>
+								<input class="input_text" type="text" size="5rem" title="4" value="4" />台
+
+								<button style="float: right;" class="button" onclick="btn_init()"> 初始设置</button>
+
+							</fieldset>
+						</form>
+
+					</div>
+
+					<div class="ct_2">
+						<form class="from" onsubmit="return false;">
+							<fieldset>
+								<legend>新建进程</legend>
+								<span class="ct_2_padding">进程名称	</span>
+
+								<span class="ct_2_padding">提交时间</span>
+
+								<span class="ct_2_padding">估计执行</span>
+
+								<span class="ct_2_padding">内存请求大小</span>
+
+								<span class="ct_2_padding">打印机请求数量</span>
+
+								<br />
+								<input type="text" class="input_text ct_2_padding" title="进程名称" value="进程名称" />
+								<input type="text" class="input_text ct_2_padding" title="提交时间" value="提交时间" />
+								<input type="text" class="input_text ct_2_padding" title="估计执行" value="估计执行" />
+								<input type="text" class="input_text ct_2_padding" title="内存请求大小" value="内存请求大小" />
+								<input type="text" class="input_text ct_2_padding" title="打印机请求数量" value="打印机请求数量" style="margin-left: 8%" />
+
+								<button onclick="btn_create()" class="button" style="float: right; position: relative; top: -0.5rem;"> 新建进程</button>
+							</fieldset>
+						</form>
+
+					</div>
+
+					<div class="chose">
+						<form class="from" onsubmit="return false;">
+							<fieldset>
+								<legend>请选择模拟算法</legend>
+
+								<input type="radio" name="chose" value="先来先服务"  checked="checked"/>先来先服务
+								<input type="radio" name="chose" value="时间片轮转 " />时间片轮转
+								<input type="radio" name="chose" value="短进程优先调度算法" />短进程优先调度算法
+
+								<button onclick="start_system()" style="float: right;" class="button"> 开始模拟</button>
+
+							</fieldset>
+						</form>
+					</div>
+
+					<div class="ct_3">
+						<form class="from" onsubmit="return false;">
+							<fieldset>
+								<legend>当前占用cpu的进程</legend>
+
+								<table id="table_1" cellspacing="0" border="2" style="width: 70%; text-align: center; border-color: white; ">
+									<tr>
+										<th>进程名</th>
+										<th>提交时间</th>
+										<th>估计执行</th>
+										<th>占用内存</th>
+										<th>打印机数</th>
+										<th>还需执行时间</th>
+
+									</tr>
+									<tr>
+										<td>a1</td>
+										<td>1</td>
+										<td>6</td>
+										<td>5</td>
+										<td>1</td>
+										<td>2</td>
+
+									</tr>
+								</table>
+								<br/>
+								<button class="button" style="float: right; position: relative; margin-left: 1rem; top: -3rem;">
+										 继续
+									</button>
+								<button class="button" style="float: right;position: relative;margin-left: 1rem;top: -3rem;">
+										 暂停
+									</button>
+								<button onclick="btn_wait_process()" class="button" style=" float: right;position: relative;top: -3rem;">
+										 
+										 阻塞
+								</button>
+							</fieldset>
+						</form>
+					</div>
+
+					<div class="ct_4">
+
+						<form class="from" onsubmit="return false;">
+							<fieldset>
+								<legend>就绪队列</legend>
+								<span style="position: relative; top: 2rem;"> Ready1 <br /> time 2</span>
+
+								<table id="table_2" cellspacing="0" border="2" style="position: relative;left: 4rem; top: -2rem; width: 70%; text-align: center; border-color: white; ">
+									<tr>
+										<th>进程名</th>
+										<th>提交时间</th>
+										<th>估计执行</th>
+										<th>占用内存</th>
+										<th>占用打印机数量</th>
+										<th>还需执行时间</th>
+
+									</tr>
+									<tr>
+										<td>a5</td>
+										<td>1</td>
+										<td>6</td>
+										<td>5</td>
+										<td>1</td>
+										<td>2</td>
+
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+
+									</tr>
+								</table>
+
+								<span style="position: relative; top: 2rem;">
+										 Ready2 <br /> time 3
+									</span>
+
+								<table id="table_3" cellspacing="0" border="2" style="position: relative;left: 4rem; top: -2rem; width: 70%; text-align: center; border-color: white; ">
+									<tr>
+										<th>进程名</th>
+										<th>提交时间</th>
+										<th>估计执行</th>
+										<th>占用内存</th>
+										<th>占用打印机数量</th>
+										<th>还需执行时间</th>
+
+									</tr>
+									<tr>
+										<td>a4</td>
+										<td>1</td>
+										<td>6</td>
+										<td>5</td>
+										<td>1</td>
+										<td>2</td>
+
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+
+									</tr>
+								</table>
+
+								<span style="position: relative; top: 2rem;">
+										 Ready3 <br /> time 4
+									</span>
+
+								<table id="table_4" cellspacing="0" border="2" style="position: relative;left: 4rem; top: -2rem; width: 70%; text-align: center; border-color: white; ">
+									<tr>
+										<th>进程名</th>
+										<th>提交时间</th>
+										<th>估计执行</th>
+										<th>占用内存</th>
+										<th>占用打印机数量</th>
+										<th>还需执行时间</th>
+
+									</tr>
+									<tr>
+										<td>a2</td>
+										<td>1</td>
+										<td>6</td>
+										<td>5</td>
+										<td>1</td>
+										<td>2</td>
+
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+
+									</tr>
+								</table>
+							</fieldset>
+						</form>
+
+					</div>
+
+					<div class="ct_5">
+						<form class="from" onsubmit="return false;">
+							<fieldset>
+								<legend>等待队列</legend>
+
+								<table id="table_5" cellspacing="0" border="2" style="position: relative; left: 4rem;  width: 70%; text-align: center; border-color: white; ">
+									<tr>
+										<th>进程名</th>
+										<th>提交时间</th>
+										<th>估计执行</th>
+										<th>占用内存</th>
+										<th>打印机数</th>
+										<th>还需执行时间</th>
+
+									</tr>
+									<tr>
+										<td>a4</td>
+										<td>1</td>
+										<td>6</td>
+										<td>5</td>
+										<td>1</td>
+										<td>2</td>
+
+									</tr>
+
+									<tr>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+									</tr>
+								</table>
+
+								<button class="button" style="float: right; position: relative;top: -4rem;">
+										唤醒
+									</button>
+							</fieldset>
+						</form>
+
+					</div>
+
+					<div style="float: right;">
+						<button class="button" onclick="reinit();">
+							重置
+						</button>
+						<button class="button" onclick="close_window()">
+							退出
+						</button>
+
+					</div>
+
+					<div style="height: 3rem;"></div>
+				</div>
+			</div>
+			<div class="content_2" style="display: none; height: 70rem;">
+				<p>
+					输入进程队列情况:
+				</p>
+				<table id="table_6" cellspacing="0" border="2" style="position: relative;left: 4rem; width: 70%; text-align: center; border-color: white; ">
+					<tr>
+						<th>进程名</th>
+						<th>提交时间</th>
+						<th>估计执行</th>
+						<th>占用内存</th>
+						<th>占用打印机数量</th>
+						<th>还需执行时间</th>
+
+					</tr>
+					<tr>
+						<td>a5</td>
+						<td>1</td>
+						<td>6</td>
+						<td>5</td>
+						<td>1</td>
+						<td>2</td>
+
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+
+					</tr>
+				</table>
+				
+				
+				<p>
+					执行后进程队列的情况:
+				</p>
+				<table id="table_7" cellspacing="0" border="2" style="position: relative;left: 4rem; width: 70%; text-align: center; border-color: white; ">
+					<tr>
+						<th>进程名</th>
+						<th>提交时间</th>
+						<th>估计执行</th>
+						<th>占用内存</th>
+						<th>占用打印机数量</th>
+						<th>还需执行时间</th>
+						<th>周转时间</th>
+						<th>带权周转时间</th>
+						<th>平均周转时间</th>
+						
+
+					</tr>
+					<tr>
+						<td>a5</td>
+						<td>1</td>
+						<td>6</td>
+						<td>5</td>
+						<td>1</td>
+						<td>2</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+
+					</tr>
+				</table>
+				<div style="height: 2rem;"></div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="js/content.js"></script>
+		<script type="text/javascript" src="js/table.js" ></script>
+		<script type="text/javascript" src="js/virtual_system.js" ></script>
+	</body>
+
+</html>

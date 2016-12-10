@@ -1,0 +1,47 @@
+.html{
+	font-size: 62.5%;
+	/*width: 62.5%;*/
+}
+
+/*所有的按钮*/
+.button{
+	background-color: rgba(58,183,255,0.2);
+	border: 0.1rem solid  #3AB7FF;
+	color: white;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	/*height: 2rem;
+	width: 8rem;*/
+	font-size: 0.8rem;
+}
+/*内容*/
+.content{
+	/*color:  ;*/
+	/*background: radial-gradient(cornflowerblue,aliceblue);*/
+	background-image: url(../img/fullScreen-bg.png);
+}
+/*表单式样*/
+.from{
+	padding-top: 1rem;
+	color: white;
+}
+/*输入框*/
+.input_text{
+	opacity: 0.2;
+	background-color: white;
+	width: 4rem;
+	height: 1.5rem;
+}
+/*第二个新建进程的间隔*/
+.ct_2_padding{
+	margin-left: 5%;
+}
+
+/*第二页*/
+.content_2{
+	color: white;
+}
+
+.btn_chose{
+	color: aqua;
+}
